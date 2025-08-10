@@ -23,7 +23,8 @@ export default function SignupForm({ switchToLogin }) {
         message: 'Your account has been created. You can now log in.',
         color: 'green',
       });
-      switchToLogin?.(); // optionally switch to login form automatically
+      // switchToLogin?.(); // optionally switch to login form automatically
+      switchToLogin();
     },
     onError: (err) => {
       notifications.show({

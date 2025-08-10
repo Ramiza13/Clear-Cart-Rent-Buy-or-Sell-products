@@ -9,7 +9,14 @@ import reportWebVitals from './reportWebVitals';
 import { ApolloProvider } from '@apollo/client';
 import { MantineProvider } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
-import client from './apolloClient';
+import client, { cache } from './apolloClient';
+
+import { CURRENT_USER } from './graphql/queries';
+
+cache.writeQuery({
+  query: CURRENT_USER,
+  data: { currentUser: null },
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

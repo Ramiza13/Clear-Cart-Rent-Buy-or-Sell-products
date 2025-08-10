@@ -17,6 +17,7 @@ import {
 import { notifications } from '@mantine/notifications';
 import { useNavigate } from 'react-router-dom';
 import { cache } from '../apolloClient';
+import { CURRENT_USER } from '../graphql/queries';
 
 export default function LoginForm({ switchToSignup }) {
   // const navigate = useNavigate();
@@ -26,9 +27,9 @@ export default function LoginForm({ switchToSignup }) {
     onCompleted: (data) => {
       if (data?.login) {
         cache.writeQuery({
-          query: LOGIN,
+          query: CURRENT_USER,
           variables: { username: data.login.username, password: '' },
-          data: { login: data.login },
+          data: { currentUser: data.login },
         });
 
         notifications.show({
