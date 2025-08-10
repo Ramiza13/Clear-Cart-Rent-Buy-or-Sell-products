@@ -45,4 +45,9 @@ public class ProductController {
     public boolean deleteProduct(@Argument Long id) {
         return productService.deleteProduct(id);
     }
+
+    @QueryMapping
+    public Product getProductById(@Argument Long id) {
+        return productService.getProductById(id);
+    }
 }

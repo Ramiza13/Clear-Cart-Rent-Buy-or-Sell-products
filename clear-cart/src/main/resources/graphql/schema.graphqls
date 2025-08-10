@@ -36,6 +36,10 @@ extend type Query {
     myProducts(ownerId: ID!): [Product!]!
 }
 
+extend type Query {
+    getProductById(id: ID!): Product
+}
+
 extend type Mutation {
     addProduct(
         name: String!
