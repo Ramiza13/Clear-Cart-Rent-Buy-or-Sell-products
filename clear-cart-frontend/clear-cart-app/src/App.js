@@ -1,40 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
 
-import LoginForm from './components/LoginForm';
 import AuthPage from './components/AuthPage';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import LoginForm from './components/LoginForm';
+import SignupForm from './components/SignupForm';
+import ProductList from './components/products/ProductList';
+import AddProductForm from './components/products/AddProductForm';
+import Navbar from './components/layout/Navbar';
 
 function App() {
-  // return (
-  //   <div className="App">
-  //     <header className="App-header">
-  //       <img src={logo} className="App-logo" alt="logo" />
-  //       <p>
-  //         Edit <code>src/App.js</code> and save to reload.
-  //       </p>
-  //       <a
-  //         className="App-link"
-  //         href="https://reactjs.org"
-  //         target="_blank"
-  //         rel="noopener noreferrer"
-  //       >
-  //         Learn React
-  //       </a>
-  //     </header>
-  //   </div>
-  // );
 
   return (
-    // <div className="App">
-    //   <LoginForm/>
-    //   <ToastContainer />
-    //   <Notifications position="top-right" />
-      
-    // </div>
 
-    <div className="App">
-      <AuthPage />
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/signup" element={<SignupForm />} />
+        <Route path="/products" element={<ProductList />} />
+        <Route path="/products/add" element={<AddProductForm />} />
+      </Routes>
+    </Router>
   );
 }
 

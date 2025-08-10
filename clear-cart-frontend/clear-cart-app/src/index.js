@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals';
 
 import { ApolloProvider } from '@apollo/client';
 import { MantineProvider } from '@mantine/core';
+import { ModalsProvider } from '@mantine/modals';
 import { Notifications } from '@mantine/notifications';
 import client, { cache } from './apolloClient';
 
@@ -34,8 +35,10 @@ root.render(
       withGlobalStyles
       withNormalizeCSS
     >
-      <Notifications position="top-right" zIndex={2077} />
-      <App />
+      <ModalsProvider>
+        <Notifications position="top-right" zIndex={2077} />
+        <App />
+      </ModalsProvider>
 
     </MantineProvider>
   </ApolloProvider>
