@@ -2,6 +2,8 @@ import React from 'react';
 import { useMutation } from '@apollo/client';
 import { REGISTER_USER } from '../graphql/mutations';
 import { useForm } from '@mantine/form';
+import { useNavigate } from 'react-router-dom';
+
 import {
   TextInput,
   PasswordInput,
@@ -16,6 +18,8 @@ import {
 import { notifications } from '@mantine/notifications';
 
 export default function SignupForm({ switchToLogin }) {
+  const navigate = useNavigate();
+
   const [registerUser, { loading }] = useMutation(REGISTER_USER, {
     onCompleted: () => {
       notifications.show({
@@ -130,7 +134,7 @@ export default function SignupForm({ switchToLogin }) {
 
         <Text align="center" mt="md">
           Already have an account?{' '}
-          <Anchor onClick={switchToLogin} style={{ cursor: 'pointer' }}>
+          <Anchor onClick={() => navigate('/login')} style={{ cursor: 'pointer' }}>
             Sign In
           </Anchor>
         </Text>

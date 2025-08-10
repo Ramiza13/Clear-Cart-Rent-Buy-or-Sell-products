@@ -20,7 +20,7 @@ import { cache } from '../apolloClient';
 import { CURRENT_USER } from '../graphql/queries';
 
 export default function LoginForm({ switchToSignup }) {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [login, { loading, error, data }] = useLazyQuery(LOGIN, {
     fetchPolicy: 'network-only',
@@ -100,7 +100,7 @@ export default function LoginForm({ switchToSignup }) {
 
         <Text align="center" mt="md">
           Don't have an account?{' '}
-          <Anchor onClick={switchToSignup} style={{ cursor: 'pointer' }}>
+          <Anchor onClick={() => navigate('/signup')} style={{ cursor: 'pointer' }}>
             Signup
           </Anchor>
         </Text>
