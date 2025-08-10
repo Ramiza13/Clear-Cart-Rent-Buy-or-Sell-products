@@ -7,6 +7,17 @@ type User{
     phone: String!
 }
 
+type Product {
+    id: ID!
+    name: String!
+    description: String
+    categories: [String!]!
+    price: Float!
+    availableForRent: Boolean!
+    availableForSale: Boolean!
+    owner: User!
+}
+
 
 type Query{
     login(username: String!, password: String!): User,
@@ -18,4 +29,33 @@ type Mutation{
     registerUser(username: String!, password: String!, email: String!, fullName: String!, phone: String!): User
     #    updateUser(username: String!, password: String!, email: String!, fullName: String!): User
     #    deleteUser(username: String!, password: String!, email: String!, fullName: String!): Boolean
+}
+
+extend type Query {
+    allProducts: [Product!]!
+    myProducts(ownerId: ID!): [Product!]!
+}
+
+extend type Mutation {
+    addProduct(
+        name: String!
+        description: String
+        categories: [String!]!
+        price: Float!
+        availableForRent: Boolean!
+        availableForSale: Boolean!
+        ownerId: ID!
+    ): Product!
+
+    updateProduct(
+        id: ID!
+        name: String
+        description: String
+        categories: [String!]
+        price: Float
+        availableForRent: Boolean
+        availableForSale: Boolean
+    ): Product!
+
+    deleteProduct(id: ID!): Boolean!
 }
