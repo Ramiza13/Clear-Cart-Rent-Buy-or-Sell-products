@@ -28,7 +28,7 @@ export default function SignupForm({ switchToLogin }) {
         color: 'green',
       });
       // switchToLogin?.(); // optionally switch to login form automatically
-      switchToLogin();
+      navigate('/login');
     },
     onError: (err) => {
       notifications.show({
