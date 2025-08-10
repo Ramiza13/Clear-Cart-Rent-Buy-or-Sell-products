@@ -7,6 +7,7 @@ export const LOGIN = gql`
       username
       email
       fullName
+      phone
     }
   }
 `;
@@ -32,5 +33,36 @@ export const REGISTER_USER = gql`
       fullName
       phone
     }
+  }
+`;
+
+export const ADD_PRODUCT = gql`
+  mutation AddProduct(
+    $name: String!
+    $description: String
+    $categories: [String!]!
+    $price: Float!
+    $availableForRent: Boolean!
+    $availableForSale: Boolean!
+    $ownerId: ID!
+  ) {
+    addProduct(
+      name: $name
+      description: $description
+      categories: $categories
+      price: $price
+      availableForRent: $availableForRent
+      availableForSale: $availableForSale
+      ownerId: $ownerId
+    ) {
+      id
+      name
+    }
+  }
+`;
+
+export const DELETE_PRODUCT = gql`
+  mutation DeleteProduct($id: ID!) {
+    deleteProduct(id: $id)
   }
 `;

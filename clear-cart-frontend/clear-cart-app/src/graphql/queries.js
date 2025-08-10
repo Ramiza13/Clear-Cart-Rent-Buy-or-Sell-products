@@ -7,6 +7,21 @@ export const CURRENT_USER = gql`
       username
       email
       fullName
+      phone
+    }
+  }
+`;
+
+export const GET_MY_PRODUCTS = gql`
+  query MyProducts($ownerId: ID!) {
+    myProducts(ownerId: $ownerId) {
+      id
+      name
+      description
+      categories
+      price
+      availableForRent
+      availableForSale
     }
   }
 `;
