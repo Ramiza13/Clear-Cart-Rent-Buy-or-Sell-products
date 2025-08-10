@@ -7,6 +7,7 @@ import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import ProductList from './components/products/ProductList';
 import AddProductForm from './components/products/AddProductForm';
+import EditProductForm from './components/products/EditProductForm';
 import Navbar from './components/layout/Navbar';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/products" element={<ProductList />} />
         <Route path="/products/add" element={<AddProductForm />} />
+        <Route path="/products/edit/:id" element={<EditProductForm />} />
       </Routes>
     </Router>
   );

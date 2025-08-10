@@ -66,3 +66,33 @@ export const DELETE_PRODUCT = gql`
     deleteProduct(id: $id)
   }
 `;
+
+export const UPDATE_PRODUCT = gql`
+  mutation UpdateProduct(
+    $id: ID!
+    $name: String
+    $description: String
+    $categories: [String!]
+    $price: Float
+    $availableForRent: Boolean
+    $availableForSale: Boolean
+  ) {
+    updateProduct(
+      id: $id
+      name: $name
+      description: $description
+      categories: $categories
+      price: $price
+      availableForRent: $availableForRent
+      availableForSale: $availableForSale
+    ) {
+      id
+      name
+      description
+      categories
+      price
+      availableForRent
+      availableForSale
+    }
+  }
+`;
