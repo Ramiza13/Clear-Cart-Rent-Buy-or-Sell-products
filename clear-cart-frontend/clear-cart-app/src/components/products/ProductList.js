@@ -64,7 +64,7 @@ export default function ProductList() {
   return (
     <div style={{ padding: '20px' }}>
       <h2>My Products</h2>
-      {data.myProducts.map(product => (
+      {/* {data.myProducts.map(product => (
         <Card key={product.id} shadow="sm" p="lg" mt="md">
           <Group position="apart">
             <div>
@@ -72,12 +72,56 @@ export default function ProductList() {
               <Text size="sm">{product.description}</Text>
             </div>
             <Group>
-              <Button color="blue">Edit</Button>
+              <Button color="blue" onClick={() => navigate(`/products/edit/${product.id}`)}>Edit</Button>
               <Button color="red" onClick={() => openDeleteModal(product.id)}>Delete</Button>
             </Group>
           </Group>
         </Card>
-      ))}
+      ))} */}
+
+<Table striped highlightOnHover withBorder>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Categories</th>
+            <th>Price</th>
+            {/* <th>For Rent</th>
+            <th>For Sale</th> */}
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.myProducts.map(product => (
+            <tr key={product.id}>
+              <td>{product.name}</td>
+              <td>{product.description || '-'}</td>
+              <td>{product.categories.join(', ')}</td>
+              <td>${product.price.toFixed(2)}</td>
+              {/* <td>{product.availableForRent ? 'Yes' : 'No'}</td>
+              <td>{product.availableForSale ? 'Yes' : 'No'}</td> */}
+              <td>
+                <Group spacing="xs">
+                  <Button
+                    size="xs"
+                    color="blue"
+                    onClick={() => navigate(`/products/edit/${product.id}`)}
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    size="xs"
+                    color="red"
+                    onClick={() => openDeleteModal(product.id)}
+                  >
+                    Delete
+                  </Button>
+                </Group>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
     </div>
   );
 }
