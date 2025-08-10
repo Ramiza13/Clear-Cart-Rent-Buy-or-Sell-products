@@ -37,7 +37,7 @@ export default function LoginForm({ switchToSignup }) {
           message: `Welcome ${data.login.fullName || data.login.username}!`,
           color: 'green',
         });
-        
+        navigate('/products');
       }
     },
     onError: (err) => {
